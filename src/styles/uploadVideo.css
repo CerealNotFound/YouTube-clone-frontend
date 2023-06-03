@@ -1,0 +1,110 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+:root {
+  --main-background: #282828;
+  --arrow-color: #909090;
+  --arrow-group-background: #1f1f1f;
+  --secondary-text: #aaa;
+  --input-label: #3ea6ff;
+  --input-text: #0d0d0d;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+section {
+  font-family: "Roboto", sans-serif;
+  color: #fff;
+  background-color: var(--main-background);
+  width: 100vw;
+  height: 100vh;
+
+  #header-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    #right-icons {
+      display: flex;
+      align-items: center;
+    }
+
+    .icons {
+      margin: 0.5rem;
+      padding: 0.1rem;
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+    #page-title {
+      padding: 1rem;
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+  }
+
+  #main-content-wrapper {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    #arrow-group {
+      padding: 2.5rem 2.85rem;
+      border-radius: 50%;
+      background-color: var(--arrow-group-background);
+
+      #arrow {
+        #arrow-tip {
+          width: 0;
+          height: 0;
+          border-right: 19px solid transparent;
+          border-left: 19px solid transparent;
+          border-bottom: 21px solid var(--arrow-color);
+        }
+
+        #arrow-line {
+          width: 16px;
+          height: 16px;
+          background-color: var(--arrow-color);
+          margin-left: 10px;
+        }
+      }
+
+      #arrow-underline {
+        width: 40px;
+        margin-top: 10px;
+        border-bottom: 6px solid var(--arrow-color);
+      }
+    }
+
+    #primary-text {
+      margin-top: 1.5rem;
+    }
+
+    #secondary-text {
+      color: var(--secondary-text);
+      font-size: 0.875rem;
+      margin: 0.5rem;
+    }
+
+    #select-input {
+      display: none;
+    }
+
+    #select-button {
+      border-radius: 1.5%/5%;
+      margin-top: 1rem;
+      padding: 0.5rem 1.2rem;
+      cursor: pointer;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--input-text);
+      background-color: var(--input-label);
+    }
+  }
+}
