@@ -1,0 +1,351 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+:root {
+  --nav-background: #0f0f0f;
+  --search-bar-background: hsl(0, 0%, 7%);
+  --search-bar-border: hsl(0, 0%, 18.82%);
+  --search-bar-border-active: #3ea6ff;
+  --search-bar-color: hsla(0, 100%, 100%, 0.88);
+  --search-bar-icon-background: hsla(0, 100%, 100%, 0.08);
+  --menu-item-background: rgba(255, 255, 255, 0.1);
+  --menu-hover-background: hsla(0, 100%, 100%, 0.15);
+  --mic-background: #181818;
+}
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--nav-background);
+  width: 100vw;
+  overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+  display: none;
+}
+
+main {
+  font-family: "Roboto", sans-serif;
+  display: flex;
+  justify-content: space-between;
+}
+
+.none {
+  display: none;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  font-family: "Roboto", sans-serif;
+  width: 100%;
+  background-color: var(--nav-background);
+}
+
+#hamburger-logo-wrapper {
+  display: flex;
+  align-items: flex-start;
+}
+
+#hamburger {
+  margin: 1rem;
+}
+
+#logo {
+  width: 32%;
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+}
+
+#sup-wrapper {
+  height: 5vh;
+}
+
+sup {
+  font-size: 0.65rem;
+  vertical-align: super;
+  color: #9b9b9b;
+}
+
+#mic {
+  padding: 0.5rem;
+  margin-left: 1rem;
+  border-radius: 50%;
+  background-color: var(--mic-background);
+}
+
+#mic:hover {
+  cursor: pointer;
+  background-color: var(--menu-hover-background);
+}
+
+#search-wrapper {
+  display: flex;
+  align-items: center;
+  width: 35%;
+  height: 5vh;
+  margin-top: 0.5rem;
+  padding-top: 0;
+  border-radius: 4% 0 0 4%/ 50% 50%;
+}
+
+#search-bar-wrapper {
+  display: flex;
+  align-items: center;
+  width: 70%;
+  height: 5vh;
+  padding: 0.5rem;
+  border-radius: 5% 0 0 5%/ 50% 50%;
+  background-color: var(--search-bar-background);
+  border: 1px solid var(--search-bar-border);
+}
+
+#search-bar-wrapper:focus-within {
+  border: 1px solid var(--search-bar-border-active);
+}
+
+#search-bar {
+  background-color: var(--search-bar-background);
+  font-size: 1rem;
+  color: var(--search-bar-color);
+  width: 100%;
+  outline: none;
+  border: none;
+}
+
+.search-icon-svg {
+  display: block;
+  width: 1.5rem;
+  height: auto;
+}
+
+#icon-searchbar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0 20% 20% 0/ 50% 50%;
+  width: 5vw;
+  height: 5vh;
+  border: 1px solid var(--search-bar-border);
+  border-left: none;
+  background-color: var(--search-bar-icon-background);
+}
+
+.searchbar-icon-svg {
+  width: 1.5rem;
+  height: auto;
+}
+
+#right-icons-wrapper {
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
+}
+
+#right-icons-wrapper div {
+  padding: 0.5rem;
+  margin: 0.2rem;
+  border-radius: 50%;
+}
+
+#notifications:hover,
+#create-icon:hover {
+  background-color: var(--menu-hover-background);
+  cursor: pointer;
+}
+
+#user-avatar {
+  width: 2rem;
+  height: auto;
+  border-radius: 50%;
+}
+
+section {
+  width: 80%;
+}
+
+#menu-wrapper {
+  width: 100%;
+  margin-top: 1vw;
+  height: min-content;
+  display: flex;
+  align-items: center;
+  background-color: var(--nav-background);
+  padding: 0 1rem 1rem 0;
+}
+
+.menu-category {
+  padding: 0.5rem;
+  margin-right: 1rem;
+  width: max-content;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #fff;
+  background-color: var(--menu-item-background);
+}
+
+.menu-category:hover {
+  cursor: pointer;
+  background-color: var(--menu-hover-background);
+}
+
+#sidebar {
+  display: block;
+  width: 15%;
+  position: relative;
+  transform: translateX(0);
+}
+
+.sidebar-default-state {
+  position: absolute;
+  transform: translateX(-100vw);
+}
+
+#aside-wrapper {
+  width: 100%;
+  overflow-y: scroll;
+  position: fixed;
+  left: 0;
+  padding: 0 1.5rem 3rem calc(1rem - 0.8rem);
+  font-size: 0.9rem;
+  height: 100vh;
+  background-color: var(--nav-background);
+}
+
+.aside-link:hover {
+  cursor: pointer;
+  background-color: var(--menu-item-background);
+}
+
+#subscription-title {
+  margin: 1rem;
+  font-size: 1rem;
+}
+
+#aside-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.aside-link-wrapper .aside-link {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+  margin: 0.7rem;
+  color: #fff;
+  width: 100%;
+  border-radius: 5%/25%;
+}
+
+.aside-link-wrapper {
+  border-bottom: 1px solid var(--search-bar-border);
+}
+
+#aside-wrapper hr {
+  border: none;
+  border-bottom: 1px solid var(--search-bar-border);
+}
+
+.aside-link-wrapper img {
+  width: 2rem;
+  height: auto;
+  margin-right: 1.5rem;
+}
+
+.aside-link-logo {
+  margin-right: 1rem;
+}
+
+#videos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  box-sizing: content-box;
+  width: 100%;
+  /* display: grid; */
+  /* grid-gap: 1rem; */
+  /* grid-template-columns: repeat(3, 1fr); */
+}
+
+.video-info-wrapper {
+  display: flex;
+  align-items: flex-start;
+}
+
+.video-thumbnail {
+  width: 100%;
+  height: auto;
+  border-radius: 4% / 8%;
+}
+
+.video-tile {
+  position: relative;
+  margin: 1rem;
+  width: 30%;
+  /* grid-column: span 1; */
+  color: #fff;
+  line-height: 1.4rem;
+}
+
+.video-title-wrapper h4 {
+  max-height: 6vh;
+  overflow: hidden;
+}
+
+.video-duration {
+  position: absolute;
+  top: 23.5vh;
+  right: 0.4vw;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  font-size: 0.8rem;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+
+.channel-name-wrapper {
+  color: #aaa;
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.views-uploadedon-wrapper {
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.creator-avatar {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+
+.separator {
+  font-size: 1.1rem;
+  font-weight: 900;
+  padding: 4px;
+}
+
+.video-views {
+  margin-right: 8px;
+}
+
+.verified-icon {
+  width: 1.3rem;
+  height: auto;
+  padding: 0.2rem;
+}
