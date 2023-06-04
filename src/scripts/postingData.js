@@ -7,10 +7,14 @@ export const postData = (data, endpoint) => {
     },
     body: JSON.stringify(data),
   })
-    .then((res) => res.json())
     .then((res) => {
-      console.log(res);
-      res.status(200).send(`data added at: ${endpoint}!!☕`);
+      if (res.ok) {
+        console.log(`data added at: ${endpoint}!!☕`);
+      } else {
+        throw new Error(
+          `HTTP error! Status: ${res.status} at endpoint: ${endpoint}`
+        );
+      }
     })
     .catch((error) => {
       console.log(`posting of data failed at: ${endpoint}\nerror: ${error}`);

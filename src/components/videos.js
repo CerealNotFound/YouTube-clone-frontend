@@ -18,8 +18,9 @@ const endpoint = "https://youtube-clone-server.onrender.com/api/videos";
 fetch(endpoint)
   .then((response) => response.json())
   .then((res) => {
+    // console.log(res);
+    localStorage.setItem("id", res[res.length - 1].id.toString());
     videosHandler(res);
-    console.log("res", res);
   })
   .catch((err) => console.log("err", err));
 
@@ -35,6 +36,8 @@ const formatNumberOfViews = (views) => {
     return formattedViews.endsWith(".0")
       ? formattedViews.slice(0, -2) + "K"
       : formattedViews + "K";
+  } else {
+    return views;
   }
 };
 

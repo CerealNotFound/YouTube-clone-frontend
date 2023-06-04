@@ -63,7 +63,6 @@ fetch(endpoint)
   .then((response) => response.json())
   .then((res) => {
     filtersHandler(res);
-    console.log("res", res);
   })
   .catch((err) => console.log("err", err));
 
@@ -72,7 +71,6 @@ const menuWrapper = document.querySelector("#menu-wrapper");
 const filtersHandler = (categories) => {
   const sortedCategories = categories.sort((a, b) => a.id - b.id);
   sortedCategories.map((category) => {
-    console.log(category);
     const menuCategory = htmlComponent([
       divComponent("menu-category", category.filter),
     ]);

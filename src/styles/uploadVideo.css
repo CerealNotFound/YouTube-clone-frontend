@@ -6,7 +6,11 @@
   --arrow-group-background: #1f1f1f;
   --secondary-text: #aaa;
   --input-label: #3ea6ff;
-  --input-text: #0d0d0d;
+  --input-label-text: #0d0d0d;
+  --input-background: hsla(0, 100%, 100%, 0.08);
+  --input-border: hsl(0, 0%, 18.82%);
+  --input-border-active: #3ea6ff;
+  --input-color: hsla(0, 100%, 100%, 0.88);
 }
 
 * {
@@ -105,6 +109,31 @@ section {
       font-weight: 600;
       color: var(--input-text);
       background-color: var(--input-label);
+    }
+
+    #input-title,
+    #input-thumbnail {
+      background-color: var(--input-background);
+      border: 1px solid var(--input-border);
+      color: var(--input-color);
+      border-radius: 2%/20%;
+      margin: 0.2rem;
+      width: 100%;
+      padding: 0.5rem;
+    }
+
+    #input-title {
+      margin-top: 1rem;
+    }
+
+    #input-title:focus {
+      outline: none;
+      border: 1px solid var(--input-border-active);
+    }
+
+    #input-thumbnail:focus {
+      outline: none;
+      border: 1px solid var(--input-border-active);
     }
   }
 }
