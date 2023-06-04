@@ -110,40 +110,40 @@ section {
       color: var(--input-label-text);
       background-color: var(--input-label);
     }
-
-    #input-title,
-    #input-thumbnail {
-      background-color: var(--input-background);
-      border: 1px solid var(--input-border);
-      color: var(--input-color);
-      border-radius: 2%/20%;
-      margin: 0.2rem;
-      width: 100%;
-      padding: 0.5rem;
-    }
-
-    #input-title {
-      margin-top: 1rem;
-    }
-
-    #input-title:focus {
-      outline: none;
-      border: 1px solid var(--input-border-active);
-    }
-
-    #input-thumbnail:focus {
-      outline: none;
-      border: 1px solid var(--input-border-active);
-    }
-
-    #submit {
-      color: #fff;
-      border-radius: 2%/10%;
-      background-color: var(--input-label);
-      padding: 0.5rem 1rem;
-      font-weight: 600;
-      border: none;
-      margin: 1rem;
-    }
   }
+}
+
+#input-title,
+#input-thumbnail {
+  background-color: var(--input-background);
+  border: 1px solid var(--input-border);
+  color: var(--input-color);
+  border-radius: 2%/20%;
+  margin: 0.2rem;
+  width: 100%;
+  padding: 0.5rem;
+}
+
+#input-title {
+  margin-top: 1rem;
+}
+
+#input-title:focus {
+  outline: none;
+  border: 1px solid var(--input-border-active);
+}
+
+#input-thumbnail:focus {
+  outline: none;
+  border: 1px solid var(--input-border-active);
+}
+
+#submit {
+  color: #fff;
+  border-radius: 2%/10%;
+  background-color: var(--input-label);
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  border: none;
+  margin: 1rem;
 }
