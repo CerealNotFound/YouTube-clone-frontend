@@ -14,15 +14,78 @@ const endpoint = "https://youtube-clone-server.onrender.com/api/videos";
 
 //backend [] => JSON => String (network) => FE => String to JSON => []
 
-//GET
-fetch(endpoint)
-  .then((response) => response.json())
-  .then((res) => {
-    // console.log(res);
-    localStorage.setItem("id", res[res.length - 1].id.toString());
-    videosHandler(res);
-  })
-  .catch((err) => console.log("err", err));
+// const patchData = [
+//   {
+//     id: 2,
+//     data: {
+//       video: "f3b74c87fd06006c9613971ba6146258.mp4",
+//     },
+//   },
+//   {
+//     id: 3,
+//     data: {
+//       video: "f3b74c87fd06006c9613971ba6146258.mp4",
+//     },
+//   },
+//   {
+//     id: 4,
+//     data: {
+//       video: "f3b74c87fd06006c9613971ba6146258.mp4",
+//     },
+//   },
+//   {
+//     id: 5,
+//     data: {
+//       video: "f3b74c87fd06006c9613971ba6146258.mp4",
+//     },
+//   },
+//   {
+//     id: 6,
+//     data: {
+//       video: "f3b74c87fd06006c9613971ba6146258.mp4",
+//     },
+//   },
+//   {
+//     id: 7,
+//     data: {
+//       video: "f3b74c87fd06006c9613971ba6146258.mp4",
+//     },
+//   },
+//   {
+//     id: 8,
+//     data: {
+//       video: "f3b74c87fd06006c9613971ba6146258.mp4",
+//     },
+//   },
+//   {
+//     id: 9,
+//     data: {
+//       video: "f3b74c87fd06006c9613971ba6146258.mp4",
+//     },
+//   },
+//   {
+//     id: 10,
+//     data: {
+//       video: "f3b74c87fd06006c9613971ba6146258.mp4",
+//     },
+//   },
+// ];
+
+// patchData.map((data) => {
+//   fetch("http://127.0.0.1:3030/api/videos", {
+//     method: "PATCH",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(data),
+//   })
+//     .then((res) => {
+//       console.log("record updated successfully🧋");
+//     })
+//     .catch((err) => {
+//       console.error(err, "record update failed!");
+//     });
+// });
 
 const formatNumberOfViews = (views) => {
   let formattedViews;
@@ -39,6 +102,27 @@ const formatNumberOfViews = (views) => {
   } else {
     return views;
   }
+};
+
+const uniformDate = (date) => {
+  // Convert the stored date to the user's local timezone
+
+  const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+  const userOffset = new Date().getTimezoneOffset() * 60000; // Offset in milliseconds
+  const userTimestamp = new Date(`${date}T00:00:00`).getTime() - userOffset;
+  const localDate = new Date(userTimestamp).toLocaleString(undefined, {
+    timeZone: userTimezone,
+  });
+
+  const onlyDate = localDate.split(",")[0].trim();
+  const dateParts = onlyDate.split("/");
+  const year = dateParts[2];
+  const month = dateParts[0].padStart(2, "0"); // Zero-pad the month if necessary
+  const day = dateParts[1].split(",")[0].trim().padStart(2, "0"); // Extract the day, trim any whitespace, and zero-pad if necessary
+
+  const formattedDate = `${day}-${month}-${year}`;
+
+  return formattedDate;
 };
 
 const videoWrapper = document.querySelector("#videos");
@@ -189,7 +273,7 @@ const videosHandler = (videos) => {
         attributes: [
           {
             attribute: "innerText",
-            value: video.uploaded_on,
+            value: uniformDate(video.uploaded_on),
           },
         ],
       },
@@ -205,3 +289,12 @@ const videosHandler = (videos) => {
     appendElements([videoTile], videoWrapper);
   });
 };
+
+//GET
+await fetch(endpoint)
+  .then((response) => response.json())
+  .then((res) => {
+    localStorage.setItem("id", res.length.toString());
+    videosHandler(res);
+  })
+  .catch((err) => console.log("err", err));

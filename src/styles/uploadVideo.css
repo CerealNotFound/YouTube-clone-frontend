@@ -101,8 +101,10 @@ section {
     }
 
     #select-button {
-      border-radius: 1.5%/5%;
+      display: block;
+      width: 6rem;
       margin-top: 1rem;
+      border-radius: 1.5%/5%;
       padding: 0.5rem 1.2rem;
       cursor: pointer;
       font-size: 0.875rem;

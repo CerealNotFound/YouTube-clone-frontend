@@ -70,18 +70,15 @@
         <p id="secondary-text">
           Your videos will be private until you publish them.
         </p>
-        <input type="file" id="select-input" />
-        <label for="select-input" id="select-button">
-          <p>SELECT FILES</p>
-        </label>
-        <input id="input-title" type="text" placeholder="Title" required />
-        <input
-          id="input-thumbnail"
-          type="text"
-          placeholder="Thumbnail"
-          required
-        />
-        <input id="submit" type="submit" />
+        <form id="video-form">
+          <input type="file" id="select-input" />
+          <label for="select-input" id="select-button">
+            <p>SELECT FILES</p>
+          </label>
+          <input id="input-title" type="text" placeholder="Title" />
+          <input id="input-thumbnail" type="text" placeholder="Thumbnail" />
+          <input id="submit" type="submit" />
+        </form>
       </div>
     </section>
   </body>

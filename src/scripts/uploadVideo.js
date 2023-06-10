@@ -18,9 +18,26 @@ const formatDuration = (duration) => {
   return `${formattedMinutes}:${formattedSeconds}`;
 };
 
-document.querySelector("#select-input").addEventListener("change", (event) => {
-  const file = event.target.files[0];
+let uploaded_on;
+
+const formatDate = (date) => {
+  var d = new Date(date),
+    month = "" + (d.getMonth() + 1),
+    day = "" + d.getDate(),
+    year = d.getFullYear();
+
+  if (month.length < 2) month = "0" + month;
+  if (day.length < 2) day = "0" + day;
+
+  return [year, month, day].join("-");
+};
+
+let file;
+
+document.querySelector("#select-input").addEventListener("change", () => {
+  file = document.querySelector("#select-input").files[0];
   const video = document.createElement("video");
+  console.log(file);
 
   //Wait for metadata to be loaded
   video.addEventListener("loadedmetadata", () => {
@@ -43,44 +60,67 @@ document.querySelector("#select-input").addEventListener("change", (event) => {
   });
 });
 
-let uploaded_on;
+document
+  .querySelector("#video-form")
+  .addEventListener("submit", async (event) => {
+    event.preventDefault();
+    let title = document.querySelector("#input-title").value;
+    let thumbnail = document.querySelector("#input-thumbnail").value;
 
-const formatDate = (date) => {
-  var d = new Date(date),
-    month = "" + (d.getMonth() + 1),
-    day = "" + d.getDate(),
-    year = d.getFullYear();
+    if (title && thumbnail && isVideo) {
+      let url;
+      let videoName;
 
-  if (month.length < 2) month = "0" + month;
-  if (day.length < 2) day = "0" + day;
+      try {
+        const response = await fetch(
+          "https://youtube-clone-server.onrender.com/s3/upload"
+        );
+        const data = await response.json();
+        console.log(data);
+        url = data.uploadURL;
+        videoName = `${data.videoName}.mp4`;
+        console.log(data.uploadURL);
+        console.log(data.videoName);
+      } catch (error) {
+        alert("Failed to fetch link");
+        console.error("Failed to fetch link", error);
+      }
 
-  return [year, month, day].join("-");
-};
+      try {
+        await fetch(url, {
+          method: "PUT",
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          body: file,
+        });
 
-document.querySelector("#submit").addEventListener("click", () => {
-  let title = document.querySelector("#input-title").value;
-  let thumbnail = document.querySelector("#input-thumbnail").value;
+        console.log(file);
+      } catch (error) {
+        alert("Failed to upload video", error);
+        // return;
+      }
 
-  if (title && thumbnail && isVideo) {
-    uploaded_on = formatDate(new Date());
-    const data = {
-      id: idTracker,
-      title: title,
-      thumbnail: thumbnail,
-      duration: formattedDuration,
-      creator: user.username,
-      avatar: user.avatar,
-      views: 0,
-      uploaded_on: uploaded_on,
-      verified: user.is_verified,
-    };
-    const endpoint = "https://youtube-clone-server.onrender.com/api/videos";
-    postData(data, endpoint);
-    localStorage.setItem("id", idTracker.toString());
-    alert("Video posted successfully 😎🔥");
-  } else if (!title || !thumbnail) {
-    alert("Enter a title and thumbnail");
-  } else {
-    alert("Select a video to be uploaded");
-  }
-});
+      uploaded_on = formatDate(new Date());
+      const data = {
+        id: idTracker,
+        title: title,
+        thumbnail: thumbnail,
+        duration: formattedDuration,
+        creator: user.username,
+        avatar: user.avatar,
+        views: 0,
+        uploaded_on: uploaded_on,
+        verified: user.is_verified,
+        video: videoName,
+      };
+      const endpoint = "https://youtube-clone-server.onrender.com/api/videos";
+      postData(data, endpoint);
+      localStorage.setItem("id", idTracker.toString());
+      alert("Video posted successfully 😎🔥");
+    } else if (!title || !thumbnail) {
+      alert("Enter a title and thumbnail");
+    } else {
+      alert("Select a video to be uploaded");
+    }
+  });
