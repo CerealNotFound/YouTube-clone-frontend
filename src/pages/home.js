@@ -1,5 +1,5 @@
 import { htmlComponent, appendElements } from "../scripts/htmlComponents.js";
-import { Header } from "../components/header.js";
+import { Navbar } from "../components/navbar.js";
 import { User } from "../components/user.js";
 import { Menu } from "../components/menu.js";
 import { Sidebar } from "../components/sidebar.js";
@@ -9,7 +9,7 @@ export const Home = () => {
   const page = htmlComponent([{ typeOfElement: "div" }]);
   const main = htmlComponent([{ typeOfElement: "main" }]);
   const header = htmlComponent([{ typeOfElement: "header" }]);
-  header[0].innerHTML = Header();
+  appendElements([Navbar()], header[0]);
   console.log(User());
   // appendElements([User()], document.getElementById("#right-icons-wrapper"));
   const sidebar = htmlComponent([

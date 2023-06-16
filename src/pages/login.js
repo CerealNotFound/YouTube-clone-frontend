@@ -11,10 +11,13 @@ export const Login = () => {
           attribute: "id",
           value: "login-wrapper",
         },
+        {
+          attribute: "innerHTML",
+          value: googleLogo,
+        },
       ],
     },
   ]);
-  loginWrapper[0].innerHTML = googleLogo();
 
   const loginWrapperContent = htmlComponent([
     {

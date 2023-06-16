@@ -8,6 +8,8 @@ export const htmlComponent = (elements) => {
         element.attributes.map((htmlAttribute) => {
           if (htmlAttribute.attribute == "innerText") {
             component.innerText = htmlAttribute.value;
+          } else if (htmlAttribute.attribute == "innerHTML") {
+            component.innerHTML = htmlAttribute.value;
           } else {
             htmlAttribute.attribute == "class"
               ? component.classList.add(htmlAttribute.value)

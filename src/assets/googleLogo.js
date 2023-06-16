@@ -1,5 +1,4 @@
-export const googleLogo = () => {
-  return `<svg
+export const googleLogo = `<svg
     viewBox="0 0 75 24"
     width="75"
     height="24"
@@ -41,4 +40,3 @@ export const googleLogo = () => {
       ></path>
     </g>
   </svg>`;
-};

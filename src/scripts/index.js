@@ -1,11 +1,11 @@
 import { onNavigate } from "./router.js";
 
 const checkAuth = () => {
-  //   if (localStorage.getItem("session")) {
+  // if (localStorage.getItem("session")) {
   onNavigate("/home");
-  //   } else {
+  // } else {
   // onNavigate("/login");
-  //   }
+  // }
 };
 
 checkAuth();
