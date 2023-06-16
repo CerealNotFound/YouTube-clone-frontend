@@ -4,18 +4,20 @@ export const htmlComponent = (elements) => {
   elements.map((element) => {
     if (element.typeOfElement != "svg" && element.typeOfElement != "path") {
       component = document.createElement(element.typeOfElement);
-      element.attributes.map((htmlAttribute) => {
-        if (htmlAttribute.attribute == "innerText") {
-          component.innerText = htmlAttribute.value;
-        } else {
-          htmlAttribute.attribute == "class"
-            ? component.classList.add(htmlAttribute.value)
-            : component.setAttribute(
-                htmlAttribute.attribute,
-                htmlAttribute.value
-              );
-        }
-      });
+      if (element.attributes) {
+        element.attributes.map((htmlAttribute) => {
+          if (htmlAttribute.attribute == "innerText") {
+            component.innerText = htmlAttribute.value;
+          } else {
+            htmlAttribute.attribute == "class"
+              ? component.classList.add(htmlAttribute.value)
+              : component.setAttribute(
+                  htmlAttribute.attribute,
+                  htmlAttribute.value
+                );
+          }
+        });
+      }
       htmlComponent.push(component);
     } else {
       component = document.createElementNS(

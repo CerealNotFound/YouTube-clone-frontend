@@ -22,7 +22,6 @@ document
         })
           .then((res) => {
             console.log("Authentication successful, welcome back 😊", res);
-            window.location.href = "../../index.html";
           })
           .catch((error) => {
             console.error("error occured", error);

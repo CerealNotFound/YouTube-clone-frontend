@@ -1,5 +1,14 @@
-export const Header = () => {
-  return `
+<!-- <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/styles/styles.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
       <nav>
         <div id="hamburger-logo-wrapper">
           <div id="hamburger">
@@ -14,7 +23,7 @@ export const Header = () => {
             <div id="logo-svg-wrapper">
               <svg
                 class="external-icon"
-                viewBox="0 0 90 20" 
+                viewBox="0 0 90 20"
                 focusable="false"
                 style="
                   pointer-events: none;
@@ -154,31 +163,21 @@ export const Header = () => {
               ></path>
             </svg>
           </div>
-          <div id="user-avatar-wrapper"></div>
+          <script></script>
+          ***********<div id="user-avatar-wrapper"></div>*********
         </div>
-      </nav>`;
-};
-
-// const searchBar = document.querySelector("#search-bar");
-// const searchIcon = document.querySelector(".search-icon-wrapper");
-// searchBar.addEventListener("focus", () => {
-//   searchIcon.classList.remove("none");
-//   searchIcon.classList.add("inline-flex");
-// });
-// searchBar.addEventListener("blur", () => {
-//   searchIcon.classList.add("none");
-//   searchIcon.classList.remove("inline-flex");
-// });
-
-// const hamburger = document.querySelector("#hamburger");
-// const aside = document.querySelector(".sidebar-default-state");
-// let isOpen = true;
-// hamburger.addEventListener("click", () => {
-//   if (isOpen) {
-//     isOpen = !isOpen;
-//     aside.removeAttribute("id");
-//     return;
-//   }
-//   isOpen = !isOpen;
-//   aside.setAttribute("id", "sidebar");
-// });
+      </nav>
+    </header>
+    <main>
+      <div id="sidebar" class="sidebar-default-state">
+        <aside id="aside-wrapper"></aside>
+        <aside id="default-aside"></aside>
+      </div>
+      <section>
+        <menu id="menu-wrapper"></menu>
+        <div id="videos"></div>
+      </section>
+    </main>
+    <script type="module" src="./src/pages/home.js"></script>
+  </body>
+</html> -->

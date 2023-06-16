@@ -16,6 +16,7 @@
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  background-color: #fff;
   width: 30%;
   height: 75vh;
   border: 1px solid grey;
@@ -33,7 +34,7 @@
 #google-logo {
   box-sizing: border-box;
   margin-bottom: 1rem;
-  width: 5rem;
+  width: 8rem;
   height: auto;
 }
 
@@ -103,7 +104,8 @@ form {
   }
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="password"] {
   box-sizing: border-box;
   padding: 0.8rem;
   font-size: 0.95rem;
@@ -124,6 +126,7 @@ input[type="text"] {
 }
 
 #create-account:hover {
+  cursor: pointer;
   background-color: #115fc611;
   color: #1763c6;
 }
@@ -137,6 +140,6 @@ input[type="text"] {
   background-color: #b2d2fc81;
 }
 
-#signin-accound-button:active {
+#signin-account-button:active {
   background-color: #b2d2fc81;
 }
