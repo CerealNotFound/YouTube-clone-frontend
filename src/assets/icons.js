@@ -122,3 +122,43 @@ style="
   </g>
 </g>
 </svg>`;
+
+export const moreInfo = `<svg
+viewBox="0 0 24 24"
+preserveAspectRatio="xMidYMid meet"
+focusable="false"
+fill="#aaa"
+class="style-scope tp-yt-iron-icon"
+style="
+  pointer-events: none;
+  display: block;
+  width: 100%;
+  height: 100%;
+"
+>
+<g>
+  <path
+    d="M13,14h-2v-2h2V14z M13,5h-2v6h2V5z M19,3H5v16.59l3.29-3.29L8.59,16H9h10V3 M20,2v15H9l-5,5V2H20L20,2z"
+  ></path>
+</g>
+</svg>`;
+
+export const cross = `<svg
+viewBox="0 0 24 24"
+preserveAspectRatio="xMidYMid meet"
+focusable="false"
+fill="#aaa"
+class="style-scope tp-yt-iron-icon"
+style="
+  pointer-events: none;
+  display: block;
+  width: 100%;
+  height: 100%;
+"
+>
+<g>
+  <path
+    d="M12.7,12l6.6,6.6l-0.7,0.7L12,12.7l-6.6,6.6l-0.7-0.7l6.6-6.6L4.6,5.4l0.7-0.7l6.6,6.6l6.6-6.6l0.7,0.7L12.7,12z"
+  ></path>
+</g>
+</svg>`;

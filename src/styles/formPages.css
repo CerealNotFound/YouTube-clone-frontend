@@ -4,11 +4,6 @@
   --grey-text: #5f6368;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-}
-
 #login-wrapper,
 #signup-wrapper {
   position: absolute;

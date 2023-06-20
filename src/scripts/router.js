@@ -1,5 +1,7 @@
 import { Home } from "../pages/home.js";
 import { Login } from "../pages/login.js";
+import { Signup } from "../pages/signup.js";
+import { UploadVideo } from "../pages/uploadVideo.js";
 
 export const router = {};
 
@@ -76,12 +78,18 @@ const routes = {
   "/": "loading",
   "/home": Home(),
   "/login": Login(),
-  "/create-account": "",
+  "/signup": Signup(),
+  "/upload": UploadVideo(),
 };
 
 export const onNavigate = (pathname) => {
   window.history.pushState({}, pathname, window.location.origin + pathname);
   const root = document.getElementById("root");
+  if (root.hasChildNodes()) {
+    root.childNodes.forEach((childNode) => {
+      root.removeChild(childNode);
+    });
+  }
   root.appendChild(routes[pathname][0]);
   window.onpopstate = () => {
     root.appendChild(routes[window.location.pathname]);

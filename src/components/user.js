@@ -1,10 +1,9 @@
 import { appendElements, htmlComponent } from "../scripts/htmlComponents.js";
-import { addUser } from "../scripts/fetchUser.js";
 
 export const User = () => {
-  addUser();
-
-  const user = JSON.parse(localStorage.getItem("user"));
+  const userSession = JSON.parse(localStorage.getItem("loggedInCred"));
+  const user = userSession.session.user.user_metadata;
+  console.log(user);
 
   const userAvatarWrapper = htmlComponent([
     {
@@ -13,6 +12,23 @@ export const User = () => {
         {
           attribute: "id",
           value: "user-avatar-wrapper",
+        },
+        {
+          attribute: "event",
+          value: {
+            eventType: "click",
+            callback: () => {
+              let modalHidden = document.querySelector(".logout-modal-hidden");
+              let modal = document.querySelector(".logout-modal");
+              if (modalHidden) {
+                modalHidden.classList.remove("logout-modal-hidden");
+                modalHidden.classList.add("logout-modal");
+              } else {
+                modal.classList.add("logout-modal-hidden");
+                modal.classList.remove("logout-modal");
+              }
+            },
+          },
         },
       ],
     },

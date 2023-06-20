@@ -34,7 +34,7 @@ const formatDate = (date) => {
 
 let file;
 
-document.querySelector("#select-input").addEventListener("change", () => {
+export const fileHandler = () => {
   file = document.querySelector("#select-input").files[0];
   const video = document.createElement("video");
   console.log(file);
@@ -58,69 +58,66 @@ document.querySelector("#select-input").addEventListener("change", () => {
     document.body.removeChild(video);
     isVideo = true;
   });
-});
+};
 
-document
-  .querySelector("#video-form")
-  .addEventListener("submit", async (event) => {
-    event.preventDefault();
-    let title = document.querySelector("#input-title").value;
-    let thumbnail = document.querySelector("#input-thumbnail").value;
+export const uploadHandler = async () => {
+  let title = document.querySelector("#input-title").value;
+  let thumbnail = document.querySelector("#input-thumbnail").value;
 
-    if (title && thumbnail && isVideo) {
-      let url;
-      let videoName;
+  if (title && thumbnail && isVideo) {
+    let url;
+    let videoName;
 
-      try {
-        const response = await fetch(
-          "https://youtube-clone-server.onrender.com/s3/upload"
-        );
-        const data = await response.json();
-        console.log(data);
-        url = data.uploadURL;
-        videoName = `${data.videoName}.mp4`;
-        console.log(data.uploadURL);
-        console.log(data.videoName);
-      } catch (error) {
-        alert("Failed to fetch link");
-        console.error("Failed to fetch link", error);
-      }
-
-      try {
-        await fetch(url, {
-          method: "PUT",
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-          body: file,
-        });
-
-        console.log(file);
-      } catch (error) {
-        alert("Failed to upload video", error);
-        // return;
-      }
-
-      uploaded_on = formatDate(new Date());
-      const data = {
-        id: idTracker,
-        title: title,
-        thumbnail: thumbnail,
-        duration: formattedDuration,
-        creator: user.username,
-        avatar: user.avatar,
-        views: 0,
-        uploaded_on: uploaded_on,
-        verified: user.is_verified,
-        video: videoName,
-      };
-      const endpoint = "https://youtube-clone-server.onrender.com/api/videos";
-      postData(data, endpoint);
-      localStorage.setItem("id", idTracker.toString());
-      alert("Video posted successfully 😎🔥");
-    } else if (!title || !thumbnail) {
-      alert("Enter a title and thumbnail");
-    } else {
-      alert("Select a video to be uploaded");
+    try {
+      const response = await fetch(
+        "https://youtube-clone-server.onrender.com/s3/upload"
+      );
+      const data = await response.json();
+      console.log(data);
+      url = data.uploadURL;
+      videoName = `${data.videoName}.mp4`;
+      console.log(data.uploadURL);
+      console.log(data.videoName);
+    } catch (error) {
+      alert("Failed to fetch link");
+      console.error("Failed to fetch link", error);
     }
-  });
+
+    try {
+      await fetch(url, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+        body: file,
+      });
+
+      console.log(file);
+    } catch (error) {
+      alert("Failed to upload video", error);
+      // return;
+    }
+
+    uploaded_on = formatDate(new Date());
+    const data = {
+      id: idTracker,
+      title: title,
+      thumbnail: thumbnail,
+      duration: formattedDuration,
+      creator: user.username,
+      avatar: user.avatar,
+      views: 0,
+      uploaded_on: uploaded_on,
+      verified: user.is_verified,
+      video: videoName,
+    };
+    const endpoint = "https://youtube-clone-server.onrender.com/api/videos";
+    postData(data, endpoint);
+    localStorage.setItem("id", idTracker.toString());
+    alert("Video posted successfully 😎🔥");
+  } else if (!title || !thumbnail) {
+    alert("Enter a title and thumbnail");
+  } else {
+    alert("Select a video to be uploaded");
+  }
+};

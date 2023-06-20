@@ -6,17 +6,27 @@ export const htmlComponent = (elements) => {
       component = document.createElement(element.typeOfElement);
       if (element.attributes) {
         element.attributes.map((htmlAttribute) => {
-          if (htmlAttribute.attribute == "innerText") {
-            component.innerText = htmlAttribute.value;
-          } else if (htmlAttribute.attribute == "innerHTML") {
-            component.innerHTML = htmlAttribute.value;
-          } else {
-            htmlAttribute.attribute == "class"
-              ? component.classList.add(htmlAttribute.value)
-              : component.setAttribute(
-                  htmlAttribute.attribute,
-                  htmlAttribute.value
-                );
+          switch (htmlAttribute.attribute) {
+            case "innerText":
+              component.innerText = htmlAttribute.value;
+              break;
+            case "innerHTML":
+              component.innerHTML = htmlAttribute.value;
+              break;
+            case "event":
+              component.addEventListener(
+                htmlAttribute.value.eventType,
+                htmlAttribute.value.callback
+              );
+              break;
+            default:
+              htmlAttribute.attribute == "class"
+                ? component.classList.add(htmlAttribute.value)
+                : component.setAttribute(
+                    htmlAttribute.attribute,
+                    htmlAttribute.value
+                  );
+              break;
           }
         });
       }

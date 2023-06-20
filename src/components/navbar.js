@@ -7,6 +7,9 @@ import {
   create,
   notification,
 } from "../assets/icons.js";
+import { onNavigate } from "../scripts/router.js";
+import { User } from "./user.js";
+import { Logout } from "./logout.js";
 
 export const Navbar = () => {
   const navbar = htmlComponent([{ typeOfElement: "nav" }]);
@@ -89,6 +92,10 @@ export const Navbar = () => {
         {
           attribute: "id",
           value: "sup-wrapper",
+        },
+        {
+          attribute: "innerText",
+          value: "IN",
         },
       ],
     },
@@ -181,6 +188,15 @@ export const Navbar = () => {
           attribute: "innerHTML",
           value: create,
         },
+        {
+          attribute: "event",
+          value: {
+            eventType: "click",
+            callback: () => {
+              onNavigate("/upload");
+            },
+          },
+        },
       ],
     },
     {
@@ -201,66 +217,27 @@ export const Navbar = () => {
       attributes: [
         {
           attribute: "id",
-          value: "user-avatar-wrapper",
+          value: "user-wrapper",
         },
       ],
     },
   ]);
+  appendElements([User(), Logout()], rightIconsWrapperContent[2]);
   appendElements([rightIconsWrapperContent], navbarContent[2]);
   appendElements([navbarContent], navbar[0]);
   console.log(navbar);
   return navbar;
 };
 
-// export const Header = () => {
-//   return `
-//       <nav>
-//         <div id="right-icons-wrapper">
-//           <div id="create-icon">
-//             <a href="./uploadVideo.html">
-//               create()
-//             </a>
-//           </div>
-//           <div id="notifications">
-//             notification()
-//           </div>
-//           <div id="user-avatar-wrapper"></div>
-//         </div>
-//       </nav>`;
-// };
-
-// // const searchBar = document.querySelector("#search-bar");
-// // const searchIcon = document.querySelector(".search-icon-wrapper");
-// // searchBar.addEventListener("focus", () => {
-// //   searchIcon.classList.remove("none");
-// //   searchIcon.classList.add("inline-flex");
-// // });
-// // searchBar.addEventListener("blur", () => {
-// //   searchIcon.classList.add("none");
-// //   searchIcon.classList.remove("inline-flex");
-// // });
-
-// // const hamburger = document.querySelector("#hamburger");
-// // const aside = document.querySelector(".sidebar-default-state");
-// // let isOpen = true;
-// // hamburger.addEventListener("click", () => {
-// //   if (isOpen) {
-// //     isOpen = !isOpen;
-// //     aside.removeAttribute("id");
-// //     return;
-// //   }
-// //   isOpen = !isOpen;
-// //   aside.setAttribute("id", "sidebar");
-// // });
-
-//         <div id="hamburger-logo-wrapper">
-//           <div id="hamburger">
-//             hamburger()
-//           </div>
-//           <div id="logo">
-//             <div id="logo-svg-wrapper">
-//               ytLogo()
-//             </div>
-//             <span id="sup-wrapper"><sup>IN</sup></span>
-//           </div>
-//         </div>
+// const hamburger = document.querySelector("#hamburger");
+// const aside = document.querySelector(".sidebar-default-state");
+// let isOpen = true;
+// hamburger.addEventListener("click", () => {
+//   if (isOpen) {
+//     isOpen = !isOpen;
+//     aside.removeAttribute("id");
+//     return;
+//   }
+//   isOpen = !isOpen;
+//   aside.setAttribute("id", "sidebar");
+// });

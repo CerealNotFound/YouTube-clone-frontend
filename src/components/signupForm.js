@@ -1,19 +1,15 @@
-import {
-  htmlComponent,
-  appendElements,
-  divComponent,
-} from "../scripts/htmlComponents.js";
+import { htmlComponent, appendElements } from "../scripts/htmlComponents.js";
 import { onNavigate } from "../scripts/router.js";
-import { loginHandler } from "../scripts/loginHandler.js";
+import { signupHandler } from "../scripts/signupHandler.js";
 
-export const loginForm = () => {
+export const signupForm = () => {
   const form = htmlComponent([
     {
       typeOfElement: "form",
       attributes: [
         {
           attribute: "id",
-          value: "login-form",
+          value: "signup-form",
         },
         {
           attribute: "event",
@@ -21,15 +17,9 @@ export const loginForm = () => {
             eventType: "submit",
             callback: async (event) => {
               event.preventDefault();
-              const loginCred = await loginHandler();
-              console.log(loginCred);
-              if (loginCred) {
-                localStorage.setItem("loggedInCred", JSON.stringify(loginCred));
-
-                if (localStorage.getItem("loggedInCred")) {
-                  onNavigate("/home");
-                }
-              }
+              console.log("signup triggered");
+              await signupHandler();
+              onNavigate("/login");
             },
           },
         },
@@ -38,6 +28,40 @@ export const loginForm = () => {
   ]);
 
   const inputs = htmlComponent([
+    {
+      typeOfElement: "input",
+      attributes: [
+        {
+          attribute: "id",
+          value: "username",
+        },
+        {
+          attribute: "type",
+          value: "text",
+        },
+        {
+          attribute: "placeholder",
+          value: "Username",
+        },
+      ],
+    },
+    {
+      typeOfElement: "input",
+      attributes: [
+        {
+          attribute: "id",
+          value: "avatar",
+        },
+        {
+          attribute: "type",
+          value: "text",
+        },
+        {
+          attribute: "placeholder",
+          value: "Avatar",
+        },
+      ],
+    },
     {
       typeOfElement: "input",
       attributes: [
@@ -74,36 +98,6 @@ export const loginForm = () => {
     },
   ]);
 
-  const otherFormActions = htmlComponent([
-    divComponent("form-otheractions", "Forgot password?"),
-  ]);
-
-  const guestModeWrapper = htmlComponent([
-    {
-      typeOfElement: "div",
-      attributes: [
-        {
-          attribute: "id",
-          value: "guest-mode-wrapper",
-        },
-      ],
-    },
-  ]);
-
-  const guestModeText = htmlComponent([
-    {
-      typeOfElement: "div",
-      attributes: [
-        {
-          attribute: "id",
-          value: "guest-mode-text",
-        },
-      ],
-    },
-  ]);
-
-  appendElements([guestModeText, otherFormActions], guestModeWrapper[0]);
-
   const formActionsWrapper = htmlComponent([
     {
       typeOfElement: "div",
@@ -118,7 +112,7 @@ export const loginForm = () => {
 
   const formActionsWrapperContent = htmlComponent([
     {
-      typeOfElement: "div",
+      typeOfElement: "a",
       attributes: [
         {
           attribute: "id",
@@ -126,14 +120,14 @@ export const loginForm = () => {
         },
         {
           attribute: "innerText",
-          value: "Create account",
+          value: "Log in",
         },
         {
           attribute: "event",
           value: {
             eventType: "click",
             callback: () => {
-              onNavigate("/signup");
+              onNavigate("/login");
             },
           },
         },
@@ -148,7 +142,7 @@ export const loginForm = () => {
         },
         {
           attribute: "value",
-          value: "Next",
+          value: "Create",
         },
         {
           attribute: "id",
@@ -160,10 +154,7 @@ export const loginForm = () => {
 
   appendElements([formActionsWrapperContent], formActionsWrapper[0]);
 
-  appendElements(
-    [inputs, otherFormActions, guestModeWrapper, formActionsWrapper],
-    form[0]
-  );
+  appendElements([inputs, formActionsWrapper], form[0]);
 
   return form;
 };
