@@ -4,18 +4,32 @@ export const htmlComponent = (elements) => {
   elements.map((element) => {
     if (element.typeOfElement != "svg" && element.typeOfElement != "path") {
       component = document.createElement(element.typeOfElement);
-      element.attributes.map((htmlAttribute) => {
-        if (htmlAttribute.attribute == "innerText") {
-          component.innerText = htmlAttribute.value;
-        } else {
-          htmlAttribute.attribute == "class"
-            ? component.classList.add(htmlAttribute.value)
-            : component.setAttribute(
-                htmlAttribute.attribute,
-                htmlAttribute.value
+      if (element.attributes) {
+        element.attributes.map((htmlAttribute) => {
+          switch (htmlAttribute.attribute) {
+            case "innerText":
+              component.innerText = htmlAttribute.value;
+              break;
+            case "innerHTML":
+              component.innerHTML = htmlAttribute.value;
+              break;
+            case "event":
+              component.addEventListener(
+                htmlAttribute.value.eventType,
+                htmlAttribute.value.callback
               );
-        }
-      });
+              break;
+            default:
+              htmlAttribute.attribute == "class"
+                ? component.classList.add(htmlAttribute.value)
+                : component.setAttribute(
+                    htmlAttribute.attribute,
+                    htmlAttribute.value
+                  );
+              break;
+          }
+        });
+      }
       htmlComponent.push(component);
     } else {
       component = document.createElementNS(

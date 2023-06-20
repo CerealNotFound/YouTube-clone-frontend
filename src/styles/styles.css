@@ -14,17 +14,25 @@
 
 * {
   margin: 0;
-  box-sizing: border-box;
+  padding: 0;
 }
 
 body {
-  background-color: var(--nav-background);
   width: 100vw;
   overflow-x: hidden;
 }
 
 body::-webkit-scrollbar {
   display: none;
+}
+
+#home-page {
+  background-color: var(--nav-background);
+  width: 100vw;
+  box-sizing: border-box;
+  min-height: 100vh;
+  overflow-y: hidden;
+  height: auto;
 }
 
 main {
@@ -45,7 +53,7 @@ header {
 
 nav {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   font-family: "Roboto", sans-serif;
   width: 100%;
@@ -62,7 +70,7 @@ nav {
 }
 
 #logo {
-  width: 32%;
+  width: 28%;
   margin-top: 0.5rem;
   display: flex;
   align-items: center;
@@ -70,6 +78,9 @@ nav {
 
 #sup-wrapper {
   height: 5vh;
+  font-size: 0.6rem;
+  vertical-align: super;
+  color: #aaa;
 }
 
 sup {
@@ -95,7 +106,6 @@ sup {
   align-items: center;
   width: 35%;
   height: 5vh;
-  margin-top: 0.5rem;
   padding-top: 0;
   border-radius: 4% 0 0 4%/ 50% 50%;
 }
@@ -104,8 +114,8 @@ sup {
   display: flex;
   align-items: center;
   width: 70%;
-  height: 5vh;
-  padding: 0.5rem;
+  height: auto;
+  padding: 0.3rem 0.5rem;
   border-radius: 5% 0 0 5%/ 50% 50%;
   background-color: var(--search-bar-background);
   border: 1px solid var(--search-bar-border);
@@ -118,6 +128,7 @@ sup {
 #search-bar {
   background-color: var(--search-bar-background);
   font-size: 1rem;
+  padding: 0;
   color: var(--search-bar-color);
   width: 100%;
   outline: none;
@@ -150,12 +161,14 @@ sup {
 #right-icons-wrapper {
   display: flex;
   align-items: center;
-  margin-right: 1rem;
+  justify-content: space-between;
+  width: 9%;
+  margin-right: 0.5rem;
 }
 
-#right-icons-wrapper div {
+#create-icon,
+#notifications {
   padding: 0.5rem;
-  margin: 0.2rem;
   border-radius: 50%;
 }
 
@@ -168,7 +181,37 @@ sup {
 #user-avatar {
   width: 2rem;
   height: auto;
+  margin: 0.5rem;
+  cursor: pointer;
   border-radius: 50%;
+}
+
+.logout-modal-hidden {
+  display: none;
+}
+
+.logout-modal {
+  display: block;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20vw;
+  height: 10vh;
+  right: 1vw;
+  top: 3.5vw;
+  border-radius: 8px;
+  border: 1px solid var(--search-bar-border);
+  background: var(--search-bar-background);
+}
+
+#logout-button {
+  background-color: rgb(192, 0, 0);
+  color: #fff;
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 3px;
 }
 
 section {
@@ -182,7 +225,7 @@ section {
   display: flex;
   align-items: center;
   background-color: var(--nav-background);
-  padding: 0 1rem 1rem 0;
+  padding-bottom: 1rem;
 }
 
 .menu-category {
@@ -345,7 +388,7 @@ section {
 }
 
 .verified-icon {
-  width: 1.3rem;
+  width: 1rem;
   height: auto;
   padding: 0.2rem;
 }

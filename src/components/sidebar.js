@@ -95,175 +95,188 @@ const subscriptions = [
   },
 ];
 
-const asideWrapper = document.querySelector("#aside-wrapper");
-
-const asideWrapperContent = htmlComponent([
-  divComponent("aside-link-wrapper"),
-  divComponent("aside-link-wrapper"),
-  divComponent("aside-link-wrapper"),
-]);
-
-appendElements([asideWrapperContent], asideWrapper);
-
-navigationFields.map((field) => {
-  const navigationField = htmlComponent([divComponent("aside-link")]);
-
-  const navigationFieldLogo = htmlComponent([
+export const Sidebar = () => {
+  const asideWrapper = htmlComponent([
     {
-      typeOfElement: "svg",
+      typeOfElement: "aside",
       attributes: [
         {
-          attribute: "viewBox",
-          value: "0 0 24 24",
-        },
-        {
-          attribute: "width",
-          value: "24",
-        },
-        {
-          attribute: "height",
-          value: "24",
-        },
-        {
-          attribute: "class",
-          value: "aside-link-logo",
+          attribute: "id",
+          value: "aside-wrapper",
         },
       ],
     },
   ]);
 
-  const logoIcon = htmlComponent([
-    {
-      typeOfElement: "path",
-      attributes: [
-        {
-          attribute: "d",
-          value: field.logo,
-        },
-        {
-          attribute: "fill",
-          value: "#aaa",
-        },
-      ],
-    },
+  const asideWrapperContent = htmlComponent([
+    divComponent("aside-link-wrapper"),
+    divComponent("aside-link-wrapper"),
+    divComponent("aside-link-wrapper"),
   ]);
 
-  appendElements([logoIcon], navigationFieldLogo[0]);
+  appendElements([asideWrapperContent], asideWrapper[0]);
 
-  const navigationFieldTitle = htmlComponent([
-    {
-      typeOfElement: "span",
-      attributes: [
-        {
-          attribute: "innerText",
-          value: field.navigationField,
-        },
-      ],
-    },
-  ]);
+  navigationFields.map((field) => {
+    const navigationField = htmlComponent([divComponent("aside-link")]);
 
-  appendElements(
-    [navigationFieldLogo, navigationFieldTitle],
-    navigationField[0]
-  );
+    const navigationFieldLogo = htmlComponent([
+      {
+        typeOfElement: "svg",
+        attributes: [
+          {
+            attribute: "viewBox",
+            value: "0 0 24 24",
+          },
+          {
+            attribute: "width",
+            value: "24",
+          },
+          {
+            attribute: "height",
+            value: "24",
+          },
+          {
+            attribute: "class",
+            value: "aside-link-logo",
+          },
+        ],
+      },
+    ]);
 
-  appendElements([navigationField], asideWrapperContent[0]);
-});
+    const logoIcon = htmlComponent([
+      {
+        typeOfElement: "path",
+        attributes: [
+          {
+            attribute: "d",
+            value: field.logo,
+          },
+          {
+            attribute: "fill",
+            value: "#aaa",
+          },
+        ],
+      },
+    ]);
 
-playlists.map((field) => {
-  const playlist = htmlComponent([divComponent("aside-link")]);
+    appendElements([logoIcon], navigationFieldLogo[0]);
 
-  const playlistLogo = htmlComponent([
-    {
-      typeOfElement: "svg",
-      attributes: [
-        {
-          attribute: "viewBox",
-          value: "0 0 24 24",
-        },
-        {
-          attribute: "width",
-          value: "24",
-        },
-        {
-          attribute: "height",
-          value: "24",
-        },
-        {
-          attribute: "class",
-          value: "aside-link-logo",
-        },
-      ],
-    },
-  ]);
+    const navigationFieldTitle = htmlComponent([
+      {
+        typeOfElement: "span",
+        attributes: [
+          {
+            attribute: "innerText",
+            value: field.navigationField,
+          },
+        ],
+      },
+    ]);
 
-  const logoIcon = htmlComponent([
-    {
-      typeOfElement: "path",
-      attributes: [
-        {
-          attribute: "d",
-          value: field.logo,
-        },
-        {
-          attribute: "fill",
-          value: "#aaa",
-        },
-      ],
-    },
-  ]);
+    appendElements(
+      [navigationFieldLogo, navigationFieldTitle],
+      navigationField[0]
+    );
 
-  appendElements([logoIcon], playlistLogo[0]);
+    appendElements([navigationField], asideWrapperContent[0]);
+  });
 
-  const playlistTitle = htmlComponent([
-    {
-      typeOfElement: "span",
-      attributes: [
-        {
-          attribute: "innerText",
-          value: field.playlist,
-        },
-      ],
-    },
-  ]);
+  playlists.map((field) => {
+    const playlist = htmlComponent([divComponent("aside-link")]);
 
-  appendElements([playlistLogo, playlistTitle], playlist[0]);
+    const playlistLogo = htmlComponent([
+      {
+        typeOfElement: "svg",
+        attributes: [
+          {
+            attribute: "viewBox",
+            value: "0 0 24 24",
+          },
+          {
+            attribute: "width",
+            value: "24",
+          },
+          {
+            attribute: "height",
+            value: "24",
+          },
+          {
+            attribute: "class",
+            value: "aside-link-logo",
+          },
+        ],
+      },
+    ]);
 
-  appendElements([playlist], asideWrapperContent[1]);
-});
+    const logoIcon = htmlComponent([
+      {
+        typeOfElement: "path",
+        attributes: [
+          {
+            attribute: "d",
+            value: field.logo,
+          },
+          {
+            attribute: "fill",
+            value: "#aaa",
+          },
+        ],
+      },
+    ]);
 
-subscriptions.map((field) => {
-  const subscription = htmlComponent([divComponent("aside-link")]);
+    appendElements([logoIcon], playlistLogo[0]);
 
-  const avatar = htmlComponent([
-    {
-      typeOfElement: "img",
-      attributes: [
-        {
-          attribute: "src",
-          value: field.avatar,
-        },
-        {
-          attribute: "style",
-          value: "border-radius: 50%",
-        },
-      ],
-    },
-  ]);
+    const playlistTitle = htmlComponent([
+      {
+        typeOfElement: "span",
+        attributes: [
+          {
+            attribute: "innerText",
+            value: field.playlist,
+          },
+        ],
+      },
+    ]);
 
-  const channelName = htmlComponent([
-    {
-      typeOfElement: "span",
-      attributes: [
-        {
-          attribute: "innerText",
-          value: field.name,
-        },
-      ],
-    },
-  ]);
+    appendElements([playlistLogo, playlistTitle], playlist[0]);
 
-  appendElements([avatar, channelName], subscription[0]);
+    appendElements([playlist], asideWrapperContent[1]);
+  });
 
-  appendElements([subscription], asideWrapperContent[2]);
-});
+  subscriptions.map((field) => {
+    const subscription = htmlComponent([divComponent("aside-link")]);
+
+    const avatar = htmlComponent([
+      {
+        typeOfElement: "img",
+        attributes: [
+          {
+            attribute: "src",
+            value: field.avatar,
+          },
+          {
+            attribute: "style",
+            value: "border-radius: 50%",
+          },
+        ],
+      },
+    ]);
+
+    const channelName = htmlComponent([
+      {
+        typeOfElement: "span",
+        attributes: [
+          {
+            attribute: "innerText",
+            value: field.name,
+          },
+        ],
+      },
+    ]);
+
+    appendElements([avatar, channelName], subscription[0]);
+
+    appendElements([subscription], asideWrapperContent[2]);
+  });
+  return asideWrapper;
+};

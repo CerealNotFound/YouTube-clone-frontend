@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600&family=Poppins:wght@400;500&display=swap");
+:root {
+  --form-action: #1a73e8;
+  --grey-text: #5f6368;
+}
+
+#login-wrapper,
+#signup-wrapper {
+  position: absolute;
+  box-sizing: border-box;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  width: 30%;
+  height: 75vh;
+  border: 1px solid grey;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#signup-wrapper {
+  height: 90vh;
+}
+
+#google-logo {
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+  width: 8rem;
+  height: auto;
+}
+
+body {
+  font-family: "Noto Sans", sans-serif;
+}
+
+h2 {
+  font-weight: normal;
+}
+
+a {
+  text-decoration: none;
+}
+
+#sign-in-to-text,
+#signup-to-text {
+  font-size: 0.9rem;
+  margin-bottom: 2rem;
+}
+
+.login-wrapper-text,
+.signup-wrapper-text {
+  font-family: "Poppins", sans-serif;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  width: 80%;
+
+  .form-otheractions {
+    color: var(--form-action);
+    width: 100%;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  #guest-mode-wrapper {
+    margin: 2rem 0;
+    width: 100%;
+  }
+
+  #guest-mode-text {
+    color: var(--grey-text);
+    font-size: 0.85rem;
+    margin-top: 2rem;
+  }
+
+  #form-actions-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 1rem;
+
+    #submit {
+      background-color: var(--form-action);
+      color: #fff;
+      border-radius: 4px;
+      padding: 0.6rem 1.5rem;
+      border: 1px solid white;
+      font-weight: bold;
+    }
+  }
+}
+
+input[type="text"],
+input[type="password"] {
+  box-sizing: border-box;
+  padding: 0.8rem;
+  font-size: 0.95rem;
+  margin: 0.3rem;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid rgba(128, 128, 128, 0.803);
+}
+
+#create-account,
+#signin-account-button {
+  color: var(--form-action);
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.4rem;
+  border-radius: 5px;
+}
+
+#create-account:hover {
+  cursor: pointer;
+  background-color: #115fc611;
+  color: #1763c6;
+}
+
+#signin-account-button:hover {
+  background-color: #115fc611;
+  color: #1763c6;
+}
+
+#create-account:active {
+  background-color: #b2d2fc81;
+}
+
+#signin-account-button:active {
+  background-color: #b2d2fc81;
+}
