@@ -9,8 +9,7 @@ export const signupHandler = async () => {
   console.log(username);
 
   try {
-    // let loginCred;
-    await fetch("http://127.0.0.1:3030/create-account", {
+    await fetch("https://youtube-clone-server.onrender.com/create-account", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -34,5 +33,4 @@ export const signupHandler = async () => {
     console.error("Error occured while creating users", error);
     return;
   }
-  //   return loginCred;
 };

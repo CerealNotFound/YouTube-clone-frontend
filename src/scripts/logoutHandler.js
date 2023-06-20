@@ -1,7 +1,7 @@
 export const logoutHandler = async () => {
   console.log("logout initiated");
   try {
-    await fetch("http://127.0.0.1:3030/logout")
+    await fetch("https://youtube-clone-server.onrender.com/logout")
       .then((res) => {
         console.log("Successfully logged out 👍");
       })
